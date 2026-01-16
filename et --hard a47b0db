@@ -1,0 +1,12 @@
+[33m8613cbd[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'main' of https://github.com/premsai-developer/code-migrate-ai
+[33m393cea6[m Restored UI with Dark Theme
+[33mece9608[m Update check_models.py
+[33m8a4bd3a[m Hardcoded frontend URL
+[33md659ea2[m Nuclear fix for backend
+[33m5094511[m Update requirements.txt
+[33m5bc48cb[m Fixed CORS to allow all methods
+[33mdb113d2[m Updated main.py with correct CORS and Groq
+[33md59c12b[m Updated App.jsx with Smart Switch
+[33ma47b0db[m Add dependencies to requirements.txt
+[33md69e7e8[m Added requirements for deploy
+[33mc51212f[m Fresh start - Clean code

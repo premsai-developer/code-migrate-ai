@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Upload, FileCode, ArrowRight, Activity, AlertTriangle, CheckCircle, Zap, List, ClipboardList, RotateCcw } from 'lucide-react';
+import { Upload, ArrowRight, Activity, AlertTriangle, CheckCircle, Zap, ClipboardList, RotateCcw } from 'lucide-react';
 import Editor, { DiffEditor } from '@monaco-editor/react';
 
 function App() {
+  // 🟢 THIS IS THE MISSING LINE YOU WERE LOOKING FOR
+  // Change this URL to your Render link (e.g., https://your-app.onrender.com)
+  const API_BASE = "https://code-migrate-api.onrender.com"; 
+
   const [file, setFile] = useState(null);
   const [analysis, setAnalysis] = useState(null);
   const [sourceCode, setSourceCode] = useState("// Upload a file to see code...");
@@ -26,7 +30,8 @@ function App() {
     formData.append("file", selectedFile);
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/analyze", formData);
+      // 🟢 UPDATED: Uses API_BASE
+      const response = await axios.post(`${API_BASE}/analyze`, formData);
       
       let aiData = response.data.analysis;
       if (typeof aiData === 'string') {
@@ -41,7 +46,7 @@ function App() {
       setActiveTab('code');
     } catch (error) {
       console.error("Error:", error);
-      alert("Backend error. Ensure uvicorn is running.");
+      alert("Backend error. Ensure backend is running and URL is correct.");
     }
     setLoading(false);
   };
@@ -49,7 +54,8 @@ function App() {
   const handleMigrate = async () => {
     setMigrating(true);
     try {
-        const response = await axios.post("http://127.0.0.1:8000/migrate", {
+        // 🟢 UPDATED: Uses API_BASE
+        const response = await axios.post(`${API_BASE}/migrate`, {
             code: sourceCode,
             target_lang: targetLang 
         });
@@ -74,7 +80,8 @@ function App() {
 
   const handleGenerateTests = async () => {
     try {
-        const res = await axios.post("http://127.0.0.1:8000/generate-tests", { 
+        // 🟢 UPDATED: Uses API_BASE
+        const res = await axios.post(`${API_BASE}/generate-tests`, { 
             migrated_code: migratedCode 
         });
         setMigratedCode(res.data.test_code); 
